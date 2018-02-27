@@ -4,8 +4,6 @@ class TPscene extends CGFscene
     {
         super();
     }
-
-
     init(application) 
     {
         super.init(application);
@@ -21,9 +19,14 @@ class TPscene extends CGFscene
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
 
-        this.axis=new CGFaxis(this);
+        this.axis= new CGFaxis(this);
         this.obj = new MyObject(this);
-
+        this.obj2 = new MyObject(this);
+        this.cube = new MyUnitCube(this);
+        this.cubeQuad = new MyUnitCubeQuad(this);
+        this.table = new MyTable(this);
+        this.floor = new MyFloor(this);
+        
 
         // NOTE: OpenGL transformation matrices are transposed
 
@@ -106,24 +109,50 @@ class TPscene extends CGFscene
         // ---- BEGIN Geometric transformation section
 
         // Multiplication of the previous transformations
-
-        // this.multMatrix(this.tra);     // GT = GT * tra
-        // this.multMatrix(this.rot);     // GT = GT * rot
-        // this.multMatrix(this.sca);     // GT = GT * sca
-        this.translate(5,0,2);
-        this.rotate(cos_a,)
-        this.scaling(5,2,1);
-
+        
+        //this.multMatrix(this.rot);     // GT = GT * rot
+        //this.multMatrix(this.sca);     // GT = GT * sca
+        //this.multMatrix(this.tra);     // GT = GT * tra
 
         // ---- END Geometric transformation section
         
 
         // ---- BEGIN Primitive drawing section
 
-        this.obj.display();
+        /* this.translate(0,2.5,0);
+        this.obj2.display();
+        this.scale(2.5,1,0.5);
+        this.translate(0,2.5,0);
+        //this.rotate((Math.PI/6),0,1,0);
+        this.translate(2.5,0,1);
+        this.obj.display(); */
+
+        /* this.pushMatrix();
+            this.translate(0,2.5,0);
+            this.scale(2.5,1,0.5);
+            this.translate(2.5,0,1);
+            this.obj.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+            this.scale(2.5,1,0.5);
+            this.translate(2.5,0,1);
+            this.obj2.display();
+        this.popMatrix(); */
         
         // ---- END Primitive drawing section
+    /* this.cube.display();
+    this.pushMatrix();
+        this.translate(0,0,2);
+        this.cubeQuad.display();
+    this.popMatrix(); */
+    this.pushMatrix();
+        this.translate(4,0,1.5);
+        this.table.display();
+    this.popMatrix();
 
-    };
-
+    this.pushMatrix();
+        this.floor.display();
+    this.popMatrix();
+    }
 };
